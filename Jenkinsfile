@@ -21,6 +21,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'apt-get install -y musl-gcc'
                 sh 'cargo build --release --target=x86_64-unknown-linux-musl'
                 sh 'ls ./target/release'
             }
