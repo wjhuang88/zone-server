@@ -14,12 +14,12 @@ pipeline {
         stage('Install modules & Build') {
             agent {
                 docker {
-                    image 'rust:1.47-alpine'
+                    image 'rust:1.47'
                 }
             }
             steps {
-                sh 'apk add --no-cache musl-dev openssl-dev make cmake g++'
-                sh 'cargo build --release'
+                sh 'rustup target add x86_64-unknown-linux-musl'
+                sh 'cargo build --release --target x86_64-unknown-linux-musl'
             }
         }
         stage('Pack docker image') {
