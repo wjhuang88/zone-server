@@ -17,11 +17,10 @@ pipeline {
                     reuseNode true
                     registryUrl 'https://hwj-zone-docker.pkg.coding.net'
                     registryCredentialsId "${env.DOCKER_REGISTRY_CREDENTIALS_ID}"
-                    image 'hwj-zone/build-env/rust-build-image:master-621530d7e06aa0977359f64324332ed84b43190a'
+                    image 'hwj-zone/build-env/rust-build-image:master-6d6591cd03abb86609546d4d64c951271d6c2e0e'
                 }
             }
             steps {
-                sh 'apt-get install -y musl-gcc'
                 sh 'cargo build --release --target=x86_64-unknown-linux-musl'
                 sh 'ls ./target/release'
             }
