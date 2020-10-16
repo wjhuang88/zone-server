@@ -21,7 +21,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'apt-get install libssl-dev pkg-config'
+                sh 'ln -s /bin/g++ /bin/musl-g++'
                 sh 'cargo build --release --target=x86_64-unknown-linux-musl --features vendored'
                 sh 'ls ./target/release'
             }
