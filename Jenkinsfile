@@ -14,11 +14,11 @@ pipeline {
         stage('Install modules & Build') {
             agent {
                 docker {
-                    image 'rust:1.47'
+                    image 'rust:1.47-alpine'
                 }
             }
             steps {
-                sh 'apt-get update && apt-get install -y make cmake'
+                sh 'apk update && apk add --no-cache musl-dev openssl-dev make cmake gcc g++'
                 sh 'cargo build --release'
             }
         }
