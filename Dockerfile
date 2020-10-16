@@ -1,6 +1,5 @@
 FROM alpine:3.12
 
-ENV DATABASE_URL=localhost
 WORKDIR /app
 COPY ./target/release/zone-server ./zone-server
 

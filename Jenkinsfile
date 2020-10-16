@@ -22,6 +22,9 @@ pipeline {
                 sh 'cargo build --release'
             }
         }
+        environment { 
+            DATABASE_URL = 'localhost'
+        }
         stage('Pack docker image') {
             agent any
             steps {
