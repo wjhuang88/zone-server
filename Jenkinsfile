@@ -18,7 +18,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'apk update && apk add --no-cache musl-dev openssl-dev make cmake gcc g++'
+                sh 'apk update && apk add --no-cache openssl-dev make cmake gcc g++'
                 sh 'cargo build --release'
             }
         }
