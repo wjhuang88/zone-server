@@ -18,6 +18,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'apt-get update && apt-get install -y make cmake'
                 sh 'cargo build --release'
             }
         }
