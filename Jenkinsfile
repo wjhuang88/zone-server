@@ -21,7 +21,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'ln -s /bin/g++ /bin/musl-g++'
+                sh 'sudo ln -s "/usr/bin/g++" "/usr/bin/musl-g++"'
                 sh 'cargo build --release --target=x86_64-unknown-linux-musl --features vendored'
                 sh 'ls ./target/release'
             }
