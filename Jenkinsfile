@@ -18,6 +18,7 @@ pipeline {
                     registryUrl 'https://hwj-zone-docker.pkg.coding.net'
                     registryCredentialsId "${env.DOCKER_REGISTRY_CREDENTIALS_ID}"
                     image 'hwj-zone/build-env/rust-build-image:master-6d6591cd03abb86609546d4d64c951271d6c2e0e'
+                    args '-v /root/workspace/target:/root/workspace/target'
                 }
             }
             steps {
