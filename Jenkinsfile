@@ -13,10 +13,12 @@ pipeline {
         }
         stage('Install modules & Build') {
             agent {
-                reuseNode true
-                registryUrl 'https://hwj-zone-docker.pkg.coding.net'
-                registryCredentialsId "${env.DOCKER_REGISTRY_CREDENTIALS_ID}"
-                image 'hwj-zone/build-env/rust-build-image:latest'
+                docker {
+                    reuseNode true
+                    registryUrl 'https://hwj-zone-docker.pkg.coding.net'
+                    registryCredentialsId "${env.DOCKER_REGISTRY_CREDENTIALS_ID}"
+                    image 'hwj-zone/build-env/rust-build-image:latest'
+                }
             }
             steps {
                 sh 'cargo build --release'
