@@ -18,7 +18,10 @@ pipeline {
                 }
             }
             steps {
-                sh 'apk update && apk add --no-cache openssl-dev make cmake gcc g++'
+                sh 'apk update && apk add --no-cache ca-certificates wget openssl-dev make cmake gcc g++'
+                sh 'wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub'
+                sh 'wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.28-r0/glibc-2.28-r0.apk'
+                sh 'apk add glibc-2.28-r0.apk'
                 sh 'cargo build --release'
             }
         }
