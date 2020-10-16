@@ -13,12 +13,12 @@ pipeline {
         }
         stage('Install modules & Build') {
             agent {
-                docker {
-                    image 'rust:1.47'
-                }
+                reuseNode true
+                registryUrl 'https://hwj-zone-docker.pkg.coding.net'
+                registryCredentialsId "${env.DOCKER_REGISTRY_CREDENTIALS_ID}"
+                image 'hwj-zone/build-env/rust-build-image:latest'
             }
             steps {
-                sh 'apt-get update && apt-get install -y make cmake'
                 sh 'cargo build --release'
                 sh 'ls ./target/release'
             }
