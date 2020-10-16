@@ -13,13 +13,14 @@ pipeline {
         }
         stage('Install modules & Build') {
             agent {
-                dockerfile {
-                    filename 'Dockerfile'
-                    dir '.build_support'
+                docker {
+                    image 'rust:1.47'
                 }
             }
             steps {
+                sh 'apt-get install make cmake'
                 sh 'cargo build --release'
+                sh 'ls ./target/release'
             }
         }
         stage('Pack docker image') {
