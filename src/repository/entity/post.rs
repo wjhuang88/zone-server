@@ -1,7 +1,7 @@
 use chrono::prelude::*;
 use serde::{Serialize, Deserialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, sqlx::FromRow)]
 pub struct Post {
     pub id: i64,
     pub title: Option<String>,
@@ -16,7 +16,7 @@ pub struct Post {
     pub valid: Option<i8>,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, sqlx::FromRow)]
 pub struct PostListItem {
     pub id: i64,
     pub title: Option<String>,

@@ -31,7 +31,7 @@ impl RepositoryManager {
 
     pub async fn get_post_list(&self) -> Result<Vec<entity::PostListItem>, sqlx::Error> {
         let pool = get_pool().await?;
-        let posts = sqlx::query_as!(entity::PostListItem, "select id, title, read_count, create_time, update_time, bref, tag_id, like_count, commet_count from t_o_post")
+        let posts = sqlx::query_as::<_, entity::PostListItem>("select id, title, read_count, create_time, update_time, bref, tag_id, like_count, commet_count from t_o_post")
             .fetch_all(&*pool)
             .await?;
         Ok(posts)
@@ -39,7 +39,8 @@ impl RepositoryManager {
 
     pub async fn get_post_instance(&self, id: i64) -> Result<entity::Post, sqlx::Error> {
         let pool = get_pool().await?;
-        let post = sqlx::query_as!(entity::Post, "select * from t_o_post where id=?", id)
+        let post = sqlx::query_as::<_, entity::Post>("select * from t_o_post where id=?")
+            .bind(id)
             .fetch_one(&*pool)
             .await?;
         Ok(post)
