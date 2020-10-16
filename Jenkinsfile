@@ -17,7 +17,7 @@ pipeline {
                     reuseNode true
                     registryUrl 'https://hwj-zone-docker.pkg.coding.net'
                     registryCredentialsId "${env.DOCKER_REGISTRY_CREDENTIALS_ID}"
-                    image 'hwj-zone/build-env/rust-build-image:latest'
+                    image 'hwj-zone/build-env/rust-build-image:master-57d4d9baabc450c3f84475e170f783b78c9a2e1f'
                 }
             }
             steps {
