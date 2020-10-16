@@ -1,8 +1,5 @@
 pipeline {
     agent none
-    environment { 
-        DATABASE_URL = 'localhost'
-    }
     stages {
         stage('Checkout') {
             agent any
