@@ -5,4 +5,4 @@ replace-with = 'tuna'
 registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
 
 [target.x86_64-unknown-linux-musl]
-linker = "x86_64-linux-musl-gcc"
+linker = "musl-gcc"

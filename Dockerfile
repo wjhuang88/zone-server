@@ -1,6 +1,6 @@
 FROM alpine:3.12
 
-COPY ./target/release/zone-server /app/zone-server
+COPY ./target/x86_64-unknown-linux-musl/release/zone-server /app/zone-server
 
 EXPOSE 8080
 
