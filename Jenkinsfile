@@ -18,7 +18,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'apk add --no-cache musl-dev'
+                sh 'apk add --no-cache musl-dev openssl-dev'
                 sh 'cargo build --release'
             }
         }
