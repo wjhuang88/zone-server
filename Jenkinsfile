@@ -1,5 +1,8 @@
 pipeline {
     agent none
+    environment { 
+        DATABASE_URL = 'localhost'
+    }
     stages {
         stage('Checkout') {
             agent any
@@ -21,9 +24,6 @@ pipeline {
                 sh 'apk add --no-cache musl-dev openssl-dev make cmake g++'
                 sh 'cargo build --release'
             }
-        }
-        environment { 
-            DATABASE_URL = 'localhost'
         }
         stage('Pack docker image') {
             agent any
